@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material";
-import {HomeComponent} from "../home/home.component";
+import {HomeComponent} from '../home/home.component';
+import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-historycypherquery',
@@ -9,7 +9,8 @@ import {HomeComponent} from "../home/home.component";
 })
 export class HistorycypherqueryComponent implements OnInit {
 
-  constructor(private bottomSheetRef: MatBottomSheetRef<HomeComponent>, @Inject(MAT_BOTTOM_SHEET_DATA) public data: Array<string>) { }
+  constructor(private bottomSheetRef: MatBottomSheetRef<HomeComponent>, @Inject(MAT_BOTTOM_SHEET_DATA) public data: Array<string>) {
+  }
 
   ngOnInit() {
   }

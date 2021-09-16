@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -8,8 +8,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class ContactComponent implements OnInit {
 
-  private submitted: boolean;
-  private success: boolean;
+  submitted: boolean;
+  success: boolean;
 
   messageForm: FormGroup;
 

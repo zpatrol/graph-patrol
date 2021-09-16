@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/co
 
 import * as vis from 'vis';
 import * as neo4j from 'neo4j-driver';
-import {Driver} from "neo4j-driver/types/v1";
+import {Driver} from 'neo4j-driver';
 
 @Component({
   selector: 'app-neo-vis',
@@ -43,7 +43,7 @@ export class NeoVisComponent implements OnInit {
     this._config = config;
     this._encrypted = config.encrypted || this.defaults['neo4j']['encrypted'];
     this._trust = config.trust || this.defaults.neo4j.trust;
-    this._driver = neo4j.v1.driver(config.server_url || this.defaults.neo4j.neo4jUri, neo4j.v1.auth.basic(config.server_user || this.defaults.neo4j.neo4jUser, config.server_password || this.defaults.neo4j.neo4jPassword), {
+    this._driver = neo4j.driver(config.server_url || this.defaults.neo4j.neo4jUri, neo4j.auth.basic(config.server_user || this.defaults.neo4j.neo4jUser, config.server_password || this.defaults.neo4j.neo4jPassword), {
       encrypted: this._encrypted,
       trust: this._trust
     });
@@ -97,7 +97,7 @@ export class NeoVisComponent implements OnInit {
       // of the internal node id
 
       let session = this._driver.session();
-      session.run(sizeCypher, {id: neo4j.v1.int(node['id'])})
+      session.run(sizeCypher, {id: neo4j.int(node['id'])})
         .then(function (result) {
           result.records.forEach(function (record) {
             record.forEach(function (v) { //record.forEach(function (v, k, r) {
@@ -417,9 +417,9 @@ export class NeoVisComponent implements OnInit {
     let configuration_container = document.getElementById(id_config_container);
 
     let neo4jConf = {
-      "server_url": "bolt://localhost:7687",
-      "server_password": "123",
-      "server_user": "neo4j"
+      server_url: 'bolt://localhost:7687',
+      server_user: 'neo4j',
+      server_password: 's3cr3t'
     };
     neo4jConf["container_id"]  = id_vis_container;
 
